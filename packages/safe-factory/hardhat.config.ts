@@ -9,10 +9,20 @@ import "@typechain/hardhat";
 import "solidity-coverage";
 
 const config: HardhatUserConfig = {
-    defaultNetwork: "hardhat",
+    defaultNetwork: "berachain",
     namedAccounts: {
         deployer: 0, // Do not use this account for testing
         admin: 1,
+    },
+    networks: {
+        berachain: { 
+            url: `https://artio.rpc.berachain.com/`,   
+            accounts: [`${process.env.PRIVATE_KEY_DEPLOY}`]
+         },
+         sepolia: {
+            url: `https://eth-sepolia.g.alchemy.com/v2/wJ4MOyRL_MQ9a3jJiFVpBGrfZf9jmVKL`,
+            accounts: [`${process.env.PRIVATE_KEY_DEPLOY}`]
+        },
     },
     paths: {
         artifacts: "./artifacts",
